@@ -1,0 +1,52 @@
+/*Estilos generales*/
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: Verdana;
+}
+body{
+    background: red;
+}
+.clearfix{
+    clear:both;
+    float:none;
+}
+.container{
+    width: 85%;
+    margin: 0px auto; 
+}
+
+#main-header{
+    background: white;
+    height: 100px;
+    line-height: 85px;
+
+}
+#logo{
+    width: 63%;
+    float: left;
+}
+#logo h1{
+    font-weight: bold;
+    font-size: 25px;
+    color: #FB314E;
+}
+#menu{
+    width: 380px;
+    float: left;
+}
+#menu ul li{
+    list-style: none;
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+#menu ul li a{
+    color: black;
+
+}
+#menu ul li a:hover{
+    color: #FB314E;
+    
+}

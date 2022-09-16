@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWA Ejemplo</title>
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    <!--Configurar los meta datos para la pwa-->
+    <!--Color de la aplicación-->
+    <meta name="theme-color" content="#FB314E">
+    <!--Optimización para movil-->
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+     <!--Meta etiquetas para dispositivos Apple-->
+     <meta name="apple-mobile-web-app-capable" content="yes">
+     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+     <link rel="apple-touch-icon" href="img/favicon.png">
+     <link rel="apple-touch-startup-image" href="img/favicon.png">
+
+     <!--Configuración General PWA (Manifiesto)-->
+     <link rel="manifest" href="manifest.json">
+    
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <div id="logo">
+                <h1>App web progresivas</h1>
+            </div>
+            <div id="menu">
+                <ul>
+                    <li><a href="#main-header">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#videos">Videos</a></li>
+                    <li><a href="#footer">Contactos</a></li>
+                </ul>
+            </div><!--Fin del menú-->
+        </div><!--Fin del container-->
+        
+    </header>
+    <div class="clearfix"></div>
+    <div id="slider">
+        <div class="container">
+            <h2>Ingeniería en desarrollo y gestión de software</h2>
+        </div>
+    </div><!--Fin del slider-->
+    <div id="servicios">
+        <div class="container">
+            <h2 class="subheader">Servicios</h2>
+            <div class="servicio">
+                <img src="img/1.png" alt="">
+                <h3>Desarrollo web</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Officiis odit aliquid rerum inventore voluptatibus expedita itaque dolore. 
+                </p>
+            </div>
+            <div class="servicio">
+                <img src="img/2.png" alt="">
+                <h3>Diseño web</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Officiis odit aliquid rerum inventore voluptatibus expedita itaque dolore. 
+                </p>
+            </div>
+            <div class="servicio">
+                <img src="img/3.png" alt="">
+                <h3>Asesoría</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Officiis odit aliquid rerum inventore voluptatibus expedita itaque dolore. 
+                </p>
+            </div>
+        </div>
+    </div><!--Fin de servicios-->
+    <div class="clearfix"></div><!--se aplica para que el bloque de videos no se suba con los elementos de servicios-->
+    <div id="videos">
+        <div class="container">
+            
+                <h2 class="subheader">Videos</h2>
+                <div class="video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/0EO6Cmf5EXI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                       Officiis odit aliquid rerum inventore voluptatibus expedita itaque dolore. 
+                    </p>
+                </div>
+                <div class="video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ER-uQg6lMc0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                       Officiis odit aliquid rerum inventore voluptatibus expedita itaque dolore. 
+                    </p>
+                </div>
+                <div class="video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/RHI_8taKG_s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                       Officiis odit aliquid rerum inventore voluptatibus expedita itaque dolore. 
+                    </p>
+                </div>
+            
+        </div>
+    </div><!--Fin de videos-->
+    <div class="clearfix"></div>
+    <footer id="footer">
+        <div class="container">
+            <h2 class="subheader">Contacto</h2>
+            <p>Contactanos en nuestras redes sociales</p>
+            <ul id="redes">
+                <li>
+                    <a href=""><img src="img/twitter.png" alt=""></a>
+                </li>
+                <li>
+                    <a href=""><img src="img/facebook.png" alt=""></a>
+                </li>
+                <li>
+                    <a href=""><img src="img/instagram.png" alt=""></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+    </footer>
+</body>
+</html>
