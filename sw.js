@@ -27,7 +27,7 @@ var urlsToCache = [
 ];
 //Evento install
 //Instalación del SW y guardar en cache los recursos estáticos
-self.addEventListener('install', e => {
+/*self.addEventListener('install', e => {
     e.waitUntil(
         caches.open(CACHE_NAME)
               .then(cache => {
@@ -39,6 +39,15 @@ self.addEventListener('install', e => {
               })
               .catch(err => console.log('No se ha registrado el cache', err))
     );
+});*/
+/******** */
+self.addEventListener('install', e =>{
+    const cacheS = caches.open(CACHE_NAME)
+        .then(cache =>{
+            cache.addAll(urlsToCache)
+        })
+        .catch(err => console.log('No se ha registrado',err));
+ e.waitUntil(Promise.resolve(cacheS));
 });
 
 //Evento activate
@@ -67,7 +76,7 @@ self.addEventListener('activate',e =>{
 // Evento fetch
 self.addEventListener('fetch', e =>{
     e.respondWith(
-        caches.match(e.request)
+        caches.match(e.request) //Busca si hay un cache que corresponda al que se está buscando
               .then(res => {
                 if(res){
                     //devuelvo los datos desde cache
