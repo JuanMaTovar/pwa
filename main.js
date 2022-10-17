@@ -1,11 +1,11 @@
 //Service worker
-if('serviceWorker' in navigator){
+if('serviceWorker' in navigator){//Si el serviceworker es soportado por el navegador
     console.log('Puedes usar los serviceworker');
 
     navigator.serviceWorker.register('./sw.js')
-                           .then(res => console.log('ServiceWorker OK',res))
-                           .catch(err => console.log('No serviceWorker',err));
-}else{
+                           .then(res => console.log('ServiceWorker OK',res)) //promesa ejecutada 
+                           .catch(err => console.log('No serviceWorker',err)); //error en la promesa
+}else{//En caso de que no puede usarlo
     console.log('No puedes usar los serviceWorkers')
 }
 

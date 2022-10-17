@@ -1,8 +1,9 @@
 //Asignar nombre y versión de la cache
-const CACHE_NAME = 'v1_idgs_pwa';
-//Archivos en la app que almacenare en el cache
+const CACHE_NAME = 'v1_cache_idgs';
+
+//archivos a guardar en el cache
 var urlsToCache = [
-    './',
+    './', //Todo lo del directorio actual
     './css/styles.css',
     './img/favicon.png',
     './img/1.png',
@@ -25,64 +26,63 @@ var urlsToCache = [
     './img/favicon-32.png',
     './img/favicon-16.png'
 ];
-//Evento install
-//Instalación del SW y guardar en cache los recursos estáticos
-/*self.addEventListener('install', e => {
-    e.waitUntil(
-        caches.open(CACHE_NAME)
-              .then(cache => {
-                return cache.addAll(urlsToCache)
-                            .then(() => {
-                                self.skipWaiting();
-                            });
-                           
-              })
-              .catch(err => console.log('No se ha registrado el cache', err))
-    );
-});*/
-/******** */
+
+//Evento install del SW
+//Instalación del SW y almacenar en cache los recursos estaticos que definimos anteriormente
+//la variable self hace referencia al SW
 self.addEventListener('install', e =>{
-    const cacheS = caches.open(CACHE_NAME)
-        .then(cache =>{
-            cache.addAll(urlsToCache)
-        })
-        .catch(err => console.log('No se ha registrado',err));
- e.waitUntil(Promise.resolve(cacheS));
+    e.waitUntil(//Esperar a que abra la cache
+        caches.open(CACHE_NAME)//abrimos la cache, regresa una promesa
+            .then(cache => {
+                cache.addAll(urlsToCache)//Regresamos los elementos almacenados en el cache
+                    .then(() =>{
+                        self.skipWaiting();//Espera a que se llene la cache
+                    })
+                    
+            })
+            .catch(err =>{
+                console.log('No se ha registrado el cache', err);
+            })
+    )
 });
 
 //Evento activate
-//Que la app funcione sin conexión
-self.addEventListener('activate',e =>{
-    const cacheWhitelist = [CACHE_NAME];
-
+//Este activa el SW y una vez que se active trabaje offline
+self.addEventListener('activate', e =>{
+    const cacheWhitelist = [CACHE_NAME] //vamos a guardar todos los elementos que vienen del cache original
+    //primero limpiamos el cache para quitar elementos que no se necesiten o sean redundantes
     e.waitUntil(
-        caches.keys()
-              .then(cacheNames => {
+        caches.keys() //El keys lo que hace es recoger todos los elementos que hay del cache
+            .then(cacheNames => {
                 return Promise.all(
-                    cacheNames.map(cacheName => {
-                        if(cacheWhitelist.indexOf(cacheName) === -1){
+                    //map() nos permite recorrer un array
+                    cacheNames.map(cacheName =>{
+                        //indexOf es para buscar dentro del cache
+                        //Lo siguiente es buscar un elemento y si no se encuentra borrarlo de la cache o si es redundante
+                        if(cacheWhitelist.indexOf(cacheName)=== -1){
                             //Borrar elementos que no se necesitan
                             return caches.delete(cacheName);
                         }
                     })
-                )
-              })
-              .then(()=>{
-                //Activar cache en el dispositivo del usuario
-                self.clients.claim();
-              })
+                );
+            })
+            //Activar cache
+            .then(() => {
+                self.clients.claim(); //Activa la cache actual WitheList
+            })
     );
-});
+})
 // Evento fetch
 self.addEventListener('fetch', e =>{
     e.respondWith(
-        caches.match(e.request) //Busca si hay un cache que corresponda al que se está buscando
+        caches.match(e.request) //Busca la información en el cache
               .then(res => {
                 if(res){
+                    //Si se encuentra en el cache
                     //devuelvo los datos desde cache
                     return res;
                 }
-                //En caso de que no haya datos en el cache la recupero desde el servidor
+                //En caso de que no se encuentre en el cache la recupero desde el servidor
                 return fetch(e.request);
               })
     );
